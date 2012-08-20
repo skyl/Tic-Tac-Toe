@@ -117,56 +117,56 @@ class TicTacToe extends CanvasGrid
       dm = divmod(i, 3)
       cell = new Cell(dm[0], dm[1])
       if (@pieces[i] is 'X')
-          @putX cell
+        @putX cell
       if (@pieces[i] is 'O')
-          @putO cell
+        @putO cell
 
   putX: (cell) ->
-      @pieces[cell.col + cell.row*3] = "X"
-      @ctx.beginPath()
-      @ctx.strokeStyle = random_color('hex')
-      @ctx.lineWidth = 4
-      offsetX = @PieceWidth * 0.1
-      offsetY = @PieceHeight * 0.1
-      beginX = cell.col * @PieceWidth + offsetX
-      beginY = cell.row * @PieceHeight + offsetY
-      endX = (cell.col + 1) * @PieceWidth - offsetX * 2
-      endY = (cell.row + 1) * @PieceHeight - offsetY * 2
-      @ctx.moveTo(beginX, beginY)
-      @ctx.lineTo(endX, endY)
-      @ctx.moveTo(beginX, endY)
-      @ctx.lineTo(endX, beginY)
-      @ctx.stroke()
-      @ctx.closePath()
+    @pieces[cell.col + cell.row*3] = "X"
+    @ctx.beginPath()
+    @ctx.strokeStyle = random_color('hex')
+    @ctx.lineWidth = 4
+    offsetX = @PieceWidth * 0.1
+    offsetY = @PieceHeight * 0.1
+    beginX = cell.col * @PieceWidth + offsetX
+    beginY = cell.row * @PieceHeight + offsetY
+    endX = (cell.col + 1) * @PieceWidth - offsetX * 2
+    endY = (cell.row + 1) * @PieceHeight - offsetY * 2
+    @ctx.moveTo(beginX, beginY)
+    @ctx.lineTo(endX, endY)
+    @ctx.moveTo(beginX, endY)
+    @ctx.lineTo(endX, beginY)
+    @ctx.stroke()
+    @ctx.closePath()
 
   putO: (cell) ->
-      @pieces[cell.col + cell.row * 3] = "O"
-      @ctx.beginPath()
-      @ctx.strokeStyle = random_color('hex')
-      @ctx.lineWidth = 4
-      offsetX = @PieceWidth * 0.1
-      offsetY = @PieceHeight * 0.1
-      beginX = cell.col * @PieceWidth + offsetX
-      beginY = cell.row * @PieceHeight + offsetY
-      endX = (cell.col + 1) * @PieceWidth - offsetX * 2
-      endY = (cell.row + 1) * @PieceHeight - offsetY * 2
-      @ctx.arc(beginX + ((endX - beginX) / 2), beginY + ((endY - beginY) / 2), (endX - beginX) / 2 , 0, Math.PI * 2, true)
-      @ctx.stroke()
-      @ctx.closePath()
+    @pieces[cell.col + cell.row * 3] = "O"
+    @ctx.beginPath()
+    @ctx.strokeStyle = random_color('hex')
+    @ctx.lineWidth = 4
+    offsetX = @PieceWidth * 0.1
+    offsetY = @PieceHeight * 0.1
+    beginX = cell.col * @PieceWidth + offsetX
+    beginY = cell.row * @PieceHeight + offsetY
+    endX = (cell.col + 1) * @PieceWidth - offsetX * 2
+    endY = (cell.row + 1) * @PieceHeight - offsetY * 2
+    @ctx.arc(beginX + ((endX - beginX) / 2), beginY + ((endY - beginY) / 2), (endX - beginX) / 2 , 0, Math.PI * 2, true)
+    @ctx.stroke()
+    @ctx.closePath()
 
   put: (index, player) ->
     dm = divmod(index, 3)
     cell = new Cell(dm[0], dm[1])
     if (player is "O")
-        @putO cell
+      @putO cell
     else
-        @putX cell
+      @putX cell
 
   click: (e) =>
     if (@thinking)
       if (@get_valid_moves().length > 0)
-          alert("This might take a while, I just can't decide.")
-          return
+        alert("This might take a while, I just can't decide.")
+        return
       else
         alert("I'm pretty sure THAT's not legal.  How about we just start again?")
 
@@ -211,7 +211,7 @@ class TicTacToe extends CanvasGrid
     for row in winning_rows
       arr = [@pieces[row[0]], @pieces[row[1]], @pieces[row[2]]]
       if (@row_wins(arr))
-          return arr[0]
+        return arr[0]
     return ""
 
   playerindxs: () ->
